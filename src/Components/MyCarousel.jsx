@@ -96,7 +96,10 @@ class Carousel extends Component {
                     className="carousel-img img-fluid"
                     src={movie.Poster}
                     alt={movie.Title}
-                  />
+                  /> 
+                  {/* Ho dato alle immagini un aspect ratio di 3/4 per renderle visivamente più leggibili in quanto l'API
+                  ci forniva immagini in formato verticale, quindi se avessimo optato per un layout simile a quello
+                  di Netflix, le immagini sarebbero state tagliate in modo "brutale" */}
                 </div>
               ))}
             </Slider>
