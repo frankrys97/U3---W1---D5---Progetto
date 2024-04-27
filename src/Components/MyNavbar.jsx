@@ -12,6 +12,7 @@ import {
 import logo from "../Netflix-assets/kisspng-netflix-streaming-media-television-show-logo-netflix-logo-5b35b03bb4e9d0.753613021530245179741.png";
 import kidsImage from "../Netflix-assets/assets/kids_icon.png";
 import profileImage from "../Netflix-assets/assets/avatar.png";
+import { Link } from "react-router-dom";
 
 class MyNavBar extends Component {
   state = {
@@ -29,13 +30,15 @@ class MyNavBar extends Component {
     return (
       <Navbar variant="dark" expand="lg" className="custom-navbar">
         <Container>
-          <Navbar.Brand href="#">
+          <Navbar.Brand as={Link} to="/">
             <img src={logo} alt="logo" style={{ width: "120px" }} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#">Home</Nav.Link>
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
               <Nav.Link href="#" active>
                 TV Shows
               </Nav.Link>
@@ -111,9 +114,23 @@ class MyNavBar extends Component {
                   />
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#">Account</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link
+                    className="text-decoration-none text-white"
+                    to="/profile"
+                  >
+                    Account
+                  </Link>
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#">Settings</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link
+                    className="text-decoration-none text-white"
+                    to="/settings"
+                  >
+                    Settings
+                  </Link>
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
