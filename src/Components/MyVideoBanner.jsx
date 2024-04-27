@@ -47,7 +47,7 @@ class VideoBanner extends Component {
               di amicizia/amore. Usando come pretesto il ricordo del primo
               incontro con la loro madre Ted racconta
             </p>
-            <div>
+            <div className="d-flex gap-2">
               <Button
                 type="button"
                 variant="outline-light"

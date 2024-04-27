@@ -93,7 +93,7 @@ class Carousel extends Component {
               {this.state.movies.map((movie) => (
                 <div key={movie.imdbID} className="slider-item">
                   <OverlayTrigger
-                    trigger="hover"
+                    trigger="click"
                     placement="right"
                     overlay={
                       <Popover data-bs-theme="dark">

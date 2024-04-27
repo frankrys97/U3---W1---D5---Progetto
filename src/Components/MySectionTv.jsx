@@ -36,10 +36,10 @@ class TVShowsHeader extends Component {
               </div>
               <div>
                 <Form.Select
-                  className="form-select"
+                  className="form-select bg-transparent text-white"
                   id="selectElement"
-                  aria-label="Default select example"
-                  data-bs-theme="dark"
+                  aria-label="Default select example"                  
+                  // data-bs-theme="dark"
                 >
                   <option>Genres</option>
                   <option value="1">Action</option>
