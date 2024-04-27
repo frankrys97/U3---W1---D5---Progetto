@@ -91,7 +91,7 @@ class Carousel extends Component {
           <div className="slider-container">
             <Slider {...settings}>
               {this.state.movies.map((movie) => (
-                <div key={movie.imdbID}>
+                <div key={movie.imdbID}  className="slider-item">
                   <img
                     className="carousel-img img-fluid"
                     src={movie.Poster}
