@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Alert, Container, Spinner } from "react-bootstrap";
+import { Alert, Container, OverlayTrigger, Popover, Spinner } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -69,10 +69,10 @@ class Carousel extends Component {
       return null;
     }
 
-    // Ho preferito optare per una gestione diversa del caso dell'errore poichè a livello di UI preferivo che se la fetch 
-    // avesse avuto qualche bug venisse visualizzato un singolo messaggio di errore nella pagina e non una per ogni singola 
+    // Ho preferito optare per una gestione diversa del caso dell'errore poichè a livello di UI preferivo che se la fetch
+    // avesse avuto qualche bug venisse visualizzato un singolo messaggio di errore nella pagina e non una per ogni singola
     // chiamata.
-    // A differenza di quando ci torna un array vuoto che in quel caso ho preferito gestire 
+    // A differenza di quando ci torna un array vuoto che in quel caso ho preferito gestire
     // singolarmente le chiamate indicando che per quella saga non erano disponibili titoli.
 
     return (
@@ -91,12 +91,25 @@ class Carousel extends Component {
           <div className="slider-container">
             <Slider {...settings}>
               {this.state.movies.map((movie) => (
-                <div key={movie.imdbID}  className="slider-item">
-                  <img
-                    className="carousel-img img-fluid"
-                    src={movie.Poster}
-                    alt={movie.Title}
-                  /> 
+                <div key={movie.imdbID} className="slider-item">
+                  <OverlayTrigger
+                    trigger="hover"
+                    placement="right"
+                    overlay={
+                      <Popover data-bs-theme="dark">
+                        <Popover.Header as="h3" className="text-white">{movie.Title} - {movie.Year}</Popover.Header>
+                        <Popover.Body>
+                         <img src={movie.Poster} alt={movie.Title} className="img-fluid"/>
+                        </Popover.Body>
+                      </Popover>
+                    }
+                  >
+                    <img
+                      className="carousel-img img-fluid"
+                      src={movie.Poster}
+                      alt={movie.Title}
+                    />
+                  </OverlayTrigger>
                   {/* Ho dato alle immagini un aspect ratio di 3/4 per renderle visivamente più leggibili in quanto l'API
                   ci forniva immagini in formato verticale, quindi se avessimo optato per un layout simile a quello
                   di Netflix, le immagini sarebbero state tagliate in modo "brutale" */}
